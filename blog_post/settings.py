@@ -28,6 +28,7 @@ INSTALLED_APPS = [
     'blog',
     'search',
     'comment',
+    'tag',
 
     'django.contrib.admin',
     'django.contrib.auth',

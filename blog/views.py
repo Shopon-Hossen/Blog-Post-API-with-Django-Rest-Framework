@@ -22,7 +22,7 @@ class BaseBlogView:
     permission_classes = [AllowAny]
 
 
-class CreateBlogView(BaseBlogView, CreateAPIView):
+class BlogCreateView(BaseBlogView, CreateAPIView):
     permission_classes = [IsAuthenticated]
 
     def perform_create(self, serializer):

@@ -19,7 +19,7 @@ from rest_framework.generics import (
 )
 
 
-class CreateUserView(APIView):
+class RegisterView(APIView):
     permission_classes = [AllowAny]
 
     def post(self, request):
