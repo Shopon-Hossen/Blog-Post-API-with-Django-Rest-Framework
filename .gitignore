@@ -20,3 +20,7 @@ __pycache__/
 # IDE-specific files
 .vscode/
 .idea/
+
+
+# Database
+*.sqlite3
