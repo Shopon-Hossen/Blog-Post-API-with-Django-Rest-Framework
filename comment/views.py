@@ -1,5 +1,6 @@
 from comment.serializer import CommentSerializer
 from comment.models import Comment
+from blog.models import Blog
 from rest_framework.permissions import (
     AllowAny,
     IsAuthenticated
@@ -9,6 +10,7 @@ from rest_framework.generics import (
     DestroyAPIView,
     ListAPIView
 )
+from django.shortcuts import get_object_or_404
 
 
 class BaseCommentView:
@@ -34,5 +36,9 @@ class DeleteCommentView(BaseCommentView, DestroyAPIView):
 
 
 class ListCommentView(BaseCommentView, ListAPIView):
+    permission_classes = [AllowAny]
+
     def get_queryset(self):
-        return Comment.objects.filter(blog=self.request.data['blog'])
+        blog_id = self.request.query_params.get('blog_id')
+        blog = get_object_or_404(Blog, id=blog_id)
+        return blog.comments.all()

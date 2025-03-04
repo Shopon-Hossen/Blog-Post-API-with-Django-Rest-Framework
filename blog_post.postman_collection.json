@@ -13,7 +13,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"email\": \"sabu@gmail.com\",\r\n    \"first_name\": \"Sabu\",\r\n    \"last_name\": \"Hossen\",\r\n    \"password\": \"1\"\r\n}",
+					"raw": "{\r\n    \"email\": \"shopon@example.com\",\r\n    \"first_name\": \"Shopon\",\r\n    \"last_name\": \"Hossen\",\r\n    \"password\": \"1\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -41,7 +41,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"email\": \"shopon@gmail.com\",\r\n    \"password\": \"1\"\r\n}",
+					"raw": "{\r\n    \"email\": \"shopon@example.com\",\r\n    \"password\": \"1\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -80,13 +80,12 @@
 					}
 				},
 				"url": {
-					"raw": "{{base_url}}/account/user/",
+					"raw": "{{base_url}}/account/",
 					"host": [
 						"{{base_url}}"
 					],
 					"path": [
 						"account",
-						"user",
 						""
 					]
 				}
@@ -111,14 +110,14 @@
 					}
 				},
 				"url": {
-					"raw": "{{base_url}}/account/user/2/",
+					"raw": "{{base_url}}/account/user/1/",
 					"host": [
 						"{{base_url}}"
 					],
 					"path": [
 						"account",
 						"user",
-						"2",
+						"1",
 						""
 					]
 				}
@@ -221,7 +220,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"title\": \"Sabu Blgo 5\",\r\n    \"content\": \"Content\"\r\n}",
+					"raw": "{\r\n    \"title\": \"Blgo 1\",\r\n    \"content\": \"Content\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -279,17 +278,11 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://127.0.0.1:8000/api/blog/list/?page=2",
-					"protocol": "http",
+					"raw": "{{base_url}}/blog/list/?page=2",
 					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
+						"{{base_url}}"
 					],
-					"port": "8000",
 					"path": [
-						"api",
 						"blog",
 						"list",
 						""
@@ -337,35 +330,6 @@
 			"response": []
 		},
 		{
-			"name": "delete blog",
-			"request": {
-				"method": "DELETE",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "{{base_url}}/blog/delete/3/",
-					"host": [
-						"{{base_url}}"
-					],
-					"path": [
-						"blog",
-						"delete",
-						"3",
-						""
-					]
-				}
-			},
-			"response": []
-		},
-		{
 			"name": "update blog",
 			"request": {
 				"method": "PATCH",
@@ -395,6 +359,35 @@
 			"response": []
 		},
 		{
+			"name": "delete blog",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/blog/delete/1/",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"blog",
+						"delete",
+						"1",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "search blog",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
@@ -404,7 +397,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"title\": \"Hello 1 (Updated)\"\r\n}",
+					"raw": "",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -412,7 +405,7 @@
 					}
 				},
 				"url": {
-					"raw": "{{base_url}}/search/?title=2",
+					"raw": "{{base_url}}/search/?title=blog",
 					"host": [
 						"{{base_url}}"
 					],
@@ -423,7 +416,7 @@
 					"query": [
 						{
 							"key": "title",
-							"value": "2"
+							"value": "blog"
 						}
 					]
 				}
@@ -440,7 +433,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"title\": \"Hello 1 (Updated)\"\r\n}",
+					"raw": "",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -448,7 +441,7 @@
 					}
 				},
 				"url": {
-					"raw": "{{base_url}}/search/suggestion/?title=2",
+					"raw": "{{base_url}}/search/suggestion/?title=blog",
 					"host": [
 						"{{base_url}}"
 					],
@@ -460,7 +453,7 @@
 					"query": [
 						{
 							"key": "title",
-							"value": "2"
+							"value": "blog"
 						}
 					]
 				}
@@ -474,7 +467,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"content\": \"Comment 5\",\r\n    \"blog\": 1\r\n}",
+					"raw": "{\r\n    \"content\": \"Comment\",\r\n    \"blog\": 1\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -502,7 +495,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"content\": \"Comment 5\",\r\n    \"blog\": 1\r\n}",
+					"raw": "",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -510,14 +503,14 @@
 					}
 				},
 				"url": {
-					"raw": "{{base_url}}/comment/delete/5/",
+					"raw": "{{base_url}}/comment/delete/1/",
 					"host": [
 						"{{base_url}}"
 					],
 					"path": [
 						"comment",
 						"delete",
-						"5",
+						"1",
 						""
 					]
 				}
@@ -534,7 +527,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"blog\": 1\r\n}",
+					"raw": "",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -542,7 +535,7 @@
 					}
 				},
 				"url": {
-					"raw": "{{base_url}}/comment/list/",
+					"raw": "{{base_url}}/comment/list/?blog_id=1",
 					"host": [
 						"{{base_url}}"
 					],
@@ -550,6 +543,12 @@
 						"comment",
 						"list",
 						""
+					],
+					"query": [
+						{
+							"key": "blog_id",
+							"value": "1"
+						}
 					]
 				}
 			},
@@ -597,6 +596,74 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "create tag",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"tags\": [\"Hello\", \"World\", \"again\"],\r\n    \"blog\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/tag/create/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"tag",
+						"create",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete tag",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"tags\": [\"again\"],\r\n    \"blog\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/tag/delete/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"tag",
+						"delete",
+						""
+					]
+				}
+			},
+			"response": []
 		}
 	],
 	"auth": {
@@ -604,7 +671,7 @@
 		"bearer": [
 			{
 				"key": "token",
-				"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQwNzU1MDcxLCJpYXQiOjE3NDA2Njg2NzEsImp0aSI6IjFhMzhiZDQ0ZDE0NDRiN2Y4YWQzOTU5NmU5ZjlkOGMyIiwidXNlcl9pZCI6Mn0.OsbHyGWRrGYLvItuesxFBu6vC8Ohc2OA00L0g7J-0pA",
+				"value": "",
 				"type": "string"
 			}
 		]

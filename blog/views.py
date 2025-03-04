@@ -9,6 +9,7 @@ from rest_framework.generics import (
 from blog.serializer import (
     BlogSerializer,
     BlogListSerializer,
+    BlogDetailSerializer,
 )
 from rest_framework.permissions import (
     IsAuthenticated,
@@ -31,10 +32,11 @@ class BlogCreateView(BaseBlogView, CreateAPIView):
 
 class BlogListView(BaseBlogView, ListAPIView):
     serializer_class = BlogListSerializer
+    ordering = ['-created_at']
 
 
 class BlogDetailView(BaseBlogView, RetrieveAPIView):
-    pass
+    serializer_class = BlogDetailSerializer
 
 
 class BlogDeleteView(BaseBlogView, DestroyAPIView):

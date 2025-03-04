@@ -3,9 +3,9 @@ from account import views
 
 
 urlpatterns = [
+    path('', views.GetUserView.as_view(), name='user'),
     path('register/', views.RegisterView.as_view(), name='register'),
     path('login/', views.LoginView.as_view(), name='login'),
-    path('user/', views.GetUserView.as_view(), name='user'),
     path('update-user/', views.UpdateUserView.as_view(), name='update_user'),
     path('change-password/', views.ChangePasswordView.as_view(),
          name='change_password'),

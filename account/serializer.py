@@ -20,3 +20,11 @@ class UserDetailSerializer(serializers.ModelSerializer):
         model = User
         fields = ['id', 'email', 'first_name', 'last_name',
                   'date_of_birth', 'is_verified', 'is_moderator']
+        read_only_fields = ['id', 'email', 'is_verified', 'is_moderator']
+
+
+class UserListSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ['id', 'email', 'first_name', 'last_name', 'is_verified']
+        read_only_fields = ['id', 'email', 'is_verified']

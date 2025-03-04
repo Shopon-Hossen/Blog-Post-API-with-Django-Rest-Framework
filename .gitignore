@@ -22,5 +22,5 @@ __pycache__/
 .idea/
 
 
-# Database
+# Deployment database
 *.sqlite3
