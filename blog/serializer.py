@@ -1,27 +1,40 @@
 from rest_framework import serializers
 from comment.serializer import CommentSerializer
 from blog.models import Blog
-from account.serializer import UserListSerializer
+from account.serializer import UserProfileSerializer
 
 
 class BlogSerializer(serializers.ModelSerializer):
+    likes = serializers.IntegerField(source='likes.count', read_only=True)
+    author = serializers.SerializerMethodField()
+
     class Meta:
         model = Blog
         fields = '__all__'
         read_only_fields = ['author']
 
+    def get_author(self, obj):
+        return UserProfileSerializer(obj.author).data
+
 
 class BlogListSerializer(serializers.ModelSerializer):
+    likes = serializers.IntegerField(source='likes.count', read_only=True)
+    author = serializers.SerializerMethodField()
+
     class Meta:
         model = Blog
-        fields = ['id', 'author', 'title', 'content', 'created_at']
+        fields = ['id', 'author', 'likes', 'title', 'content', 'created_at']
         read_only_fields = ['author']
+
+    def get_author(self, obj):
+        return UserProfileSerializer(obj.author).data
 
 
 class BlogDetailSerializer(serializers.ModelSerializer):
     comments = serializers.SerializerMethodField()
     tags = serializers.SerializerMethodField()
     author = serializers.SerializerMethodField()
+    likes = serializers.IntegerField(source='likes.count', read_only=True)
 
     class Meta:
         model = Blog
@@ -37,7 +50,7 @@ class BlogDetailSerializer(serializers.ModelSerializer):
         return [tag.name for tag in tags]
 
     def get_author(self, obj):
-        return UserListSerializer(obj.author).data
+        return UserProfileSerializer(obj.author).data
 
 
 # TODO: Create more serializer for blog app.

@@ -32,6 +32,7 @@ INSTALLED_APPS = [
     'search',
     'comment',
     'tag',
+    'like',
 
     'django.contrib.admin',
     'django.contrib.auth',

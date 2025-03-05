@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from comment.models import Comment
-from account.serializer import UserListSerializer
+from account.serializer import UserProfileSerializer
 
 
 class CommentSerializer(serializers.ModelSerializer):
@@ -12,4 +12,4 @@ class CommentSerializer(serializers.ModelSerializer):
         read_only_fields = ['author']
 
     def get_author(self, obj):
-        return UserListSerializer(obj.author).data
+        return UserProfileSerializer(obj.author).data
