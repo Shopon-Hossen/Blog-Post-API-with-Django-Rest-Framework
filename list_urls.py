@@ -3,6 +3,7 @@ import sys
 import django
 from django.urls import get_resolver, URLPattern, URLResolver
 
+
 # Set the DJANGO_SETTINGS_MODULE environment variable to project's settings module.
 os.environ.setdefault("DJANGO_SETTINGS_MODULE",
                       "blog_post.settings")
