@@ -526,13 +526,8 @@
 				"method": "GET",
 				"header": [],
 				"body": {
-					"mode": "raw",
-					"raw": "",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
+					"mode": "formdata",
+					"formdata": []
 				},
 				"url": {
 					"raw": "{{base_url}}/comment/list/?blog_id=1",
@@ -572,17 +567,11 @@
 					}
 				},
 				"url": {
-					"raw": "http://127.0.0.1:8000/api/comment/list/?page=2",
-					"protocol": "http",
+					"raw": "{{base_url}}/comment/list/?page=2&blog_id=1",
 					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
+						"{{base_url}}"
 					],
-					"port": "8000",
 					"path": [
-						"api",
 						"comment",
 						"list",
 						""
@@ -591,6 +580,10 @@
 						{
 							"key": "page",
 							"value": "2"
+						},
+						{
+							"key": "blog_id",
+							"value": "1"
 						}
 					]
 				}
@@ -612,17 +605,11 @@
 					}
 				},
 				"url": {
-					"raw": "http://127.0.0.1:8000/api/tag/create/",
-					"protocol": "http",
+					"raw": "{{base_url}}/tag/create/",
 					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
+						"{{base_url}}"
 					],
-					"port": "8000",
 					"path": [
-						"api",
 						"tag",
 						"create",
 						""
@@ -646,18 +633,68 @@
 					}
 				},
 				"url": {
-					"raw": "http://127.0.0.1:8000/api/tag/delete/",
-					"protocol": "http",
+					"raw": "{{base_url}}/tag/delete/",
 					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
+						"{{base_url}}"
 					],
-					"port": "8000",
 					"path": [
-						"api",
 						"tag",
+						"delete",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create like",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"post\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/like/create/",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"like",
+						"create",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete like",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"post\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/like/delete/",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"like",
 						"delete",
 						""
 					]
@@ -671,7 +708,7 @@
 		"bearer": [
 			{
 				"key": "token",
-				"value": "",
+				"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQxMjcwOTEyLCJpYXQiOjE3NDExODQ1MTIsImp0aSI6IjViZTliNGRiZGMzYzRlMjU5NWZmZTkzOGU4Y2U4YTViIiwidXNlcl9pZCI6Mn0.vaoTFJAj4cuw7O_ZT9aTotW-0k_8DdBIMttSTFwXE_I",
 				"type": "string"
 			}
 		]
