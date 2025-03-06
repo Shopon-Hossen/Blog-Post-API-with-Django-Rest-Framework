@@ -1,4 +1,4 @@
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import IsAuthenticated, AllowAny
 from tag.serializer import TagCreateSerializer
 from blog.models import Blog
 from rest_framework.generics import (
@@ -11,6 +11,20 @@ from rest_framework.response import Response
 from rest_framework import status
 from django.shortcuts import get_object_or_404
 from rest_framework.generics import GenericAPIView
+from blog.serializer import BlogListSerializer
+from tag.models import Tag
+from rest_framework.views import APIView
+
+
+class SearchView(APIView):
+    permission_classes = [AllowAny]
+
+    def get(self, request, *args, **kwargs):
+        tag_name = request.query_params.get('tag').lower()
+        tag = get_object_or_404(Tag, name=tag_name)
+        blogs = tag.blog_set.all()
+        serializer = BlogListSerializer(blogs, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
 
 
 class TagCreateView(CreateAPIView):

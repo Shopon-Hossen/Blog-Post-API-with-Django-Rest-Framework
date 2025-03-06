@@ -18,28 +18,33 @@ class BlogSerializer(serializers.ModelSerializer):
 
 
 class BlogListSerializer(serializers.ModelSerializer):
-    likes = serializers.IntegerField(source='likes.count', read_only=True)
+    likes = serializers.IntegerField(source='likes.count')
+    tags = serializers.SerializerMethodField()
     author = serializers.SerializerMethodField()
 
     class Meta:
         model = Blog
-        fields = ['id', 'author', 'likes', 'title', 'content', 'created_at']
-        read_only_fields = ['author']
+        fields = ['id', 'author', 'likes', 'tags', 'title', 'content', 'created_at']
+        read_only_fields = ['author', 'tags', 'likes']
 
     def get_author(self, obj):
         return UserProfileSerializer(obj.author).data
+    
+    def get_tags(self, obj):
+        tags = obj.tags.all()
+        return [tag.name for tag in tags]
 
 
 class BlogDetailSerializer(serializers.ModelSerializer):
     comments = serializers.SerializerMethodField()
     tags = serializers.SerializerMethodField()
     author = serializers.SerializerMethodField()
-    likes = serializers.IntegerField(source='likes.count', read_only=True)
+    likes = serializers.IntegerField(source='likes.count')
 
     class Meta:
         model = Blog
         fields = '__all__'
-        read_only_fields = ['author']
+        read_only_fields = ['author', 'likes', 'comments', 'tags']
 
     def get_comments(self, obj):
         comments = obj.comments.all()[:10]

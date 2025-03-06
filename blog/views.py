@@ -15,6 +15,24 @@ from rest_framework.permissions import (
     IsAuthenticated,
     AllowAny,
 )
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import status
+
+
+class SimilarView(APIView):
+    permission_classes = [AllowAny]
+
+    def get(self, request, blog_id, *args, **kwargs):
+        blog = Blog.objects.filter(id=blog_id).first()
+        if not blog:
+            return Response({
+                "error": "Blog not found"
+            }, status=status.HTTP_404_NOT_FOUND)
+        
+        similar_blogs = blog.get_similar_blogs()
+        serializer = BlogListSerializer(similar_blogs, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
 
 
 class BaseBlogView:

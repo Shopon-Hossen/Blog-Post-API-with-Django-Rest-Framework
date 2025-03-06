@@ -330,6 +330,38 @@
 			"response": []
 		},
 		{
+			"name": "similar blog",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/blog/1/similar/",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"blog",
+						"1",
+						"similar",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "update blog",
 			"request": {
 				"method": "PATCH",
@@ -597,7 +629,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"tags\": [\"Hello\", \"World\", \"again\"],\r\n    \"blog\": 1\r\n}",
+					"raw": "{\r\n    \"tags\": [\"Hello\", \"World\", \"again\"],\r\n    \"blog\": 2\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -641,6 +673,43 @@
 						"tag",
 						"delete",
 						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "search tag",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/tag/search/?tag=Hello",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"tag",
+						"search",
+						""
+					],
+					"query": [
+						{
+							"key": "tag",
+							"value": "Hello"
+						}
 					]
 				}
 			},
@@ -708,7 +777,7 @@
 		"bearer": [
 			{
 				"key": "token",
-				"value": "<access token>",
+				"value": "",
 				"type": "string"
 			}
 		]

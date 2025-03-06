@@ -15,3 +15,7 @@ class Blog(models.Model):
 
     def __str__(self):
         return self.title
+
+    # Custom method to get similar objects
+    def get_similar_blogs(self):
+        return Blog.objects.filter(tags__in=self.tags.all()).exclude(id=self.id).distinct()[:5] # First 5 objects
